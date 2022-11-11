@@ -70,47 +70,46 @@ CAST Не работает Почему?</span></ins>
 
 ### Задание 3
 
-`Приведите ответ в свободной форме........`
-
-1. `Заполните здесь этапы выполнения, если требуется ....`
-2. `Заполните здесь этапы выполнения, если требуется ....`
-3. `Заполните здесь этапы выполнения, если требуется ....`
-4. `Заполните здесь этапы выполнения, если требуется ....`
-5. `Заполните здесь этапы выполнения, если требуется ....`
-6. 
-
-```
-Поле для вставки кода...
-....
-....
-....
-....
+```sql
+SELECT
+	*
+FROM
+	sakila.rental r
+ORDER BY
+	rental_date DESC
+LIMIT 5;
 ```
 
-`При необходимости прикрепитe сюда скриншоты
-![Название скриншота](ссылка на скриншот)`
+![rental](img/rental.png)
 
 ### Задание 4
 
-`Приведите ответ в свободной форме........`
-
-1. `Заполните здесь этапы выполнения, если требуется ....`
-2. `Заполните здесь этапы выполнения, если требуется ....`
-3. `Заполните здесь этапы выполнения, если требуется ....`
-4. `Заполните здесь этапы выполнения, если требуется ....`
-5. `Заполните здесь этапы выполнения, если требуется ....`
-6. 
-
-```
-Поле для вставки кода...
-....
-....
-....
-....
+```sql
+SELECT
+	*
+FROM
+	sakila.customer c
+WHERE
+	first_name = 'KELLY'
+	OR first_name = 'WILLIE';
 ```
 
-`При необходимости прикрепитe сюда скриншоты
-![Название скриншота](ссылка на скриншот)`
+![customer1](img/customer1.png)
+
+```sql
+SELECT
+	REPLACE (LOWER(first_name),
+	'll',
+	'pp') f_name ,
+	LOWER(last_name) l_name
+FROM
+	sakila.customer c
+WHERE
+	first_name = 'KELLY'
+	OR first_name = 'WILLIE';
+```
+
+![customer2](img/customer2.png)
 
 ---
 ## Дополнительные задания (со звездочкой*)
@@ -119,14 +118,41 @@ CAST Не работает Почему?</span></ins>
 
 ### Задание 5
 
-`Приведите ответ в свободной форме........`
 
-1. `Заполните здесь этапы выполнения, если требуется ....`
-2. `Заполните здесь этапы выполнения, если требуется ....`
-3. `Заполните здесь этапы выполнения, если требуется ....`
-4. `Заполните здесь этапы выполнения, если требуется ....`
-5. `Заполните здесь этапы выполнения, если требуется ....`
-6. 
+```sql
+SELECT
+	LEFT (c.email,
+	INSTR(c.email, '@')-1) 'left',
+	RIGHT (c.email ,
+	CHAR_LENGTH(c.email)-INSTR(c.email, '@')) 'right'
+FROM
+	sakila.customer c ;
+```
 
-`При необходимости прикрепитe сюда скриншоты
-![Название скриншота](ссылка на скриншот)`
+![customer3](img/customer3.png)
+
+
+************
+<ins>
+POSITION ('@' IN c.email)
+не работает
+SQL Error [1064] [42000]: You have an error in your SQL syntax; check the manual that corresponds to your MySQL server version for the right syntax to use near 'c.email) FROM sakila.customer c' at line 1
+ 
+Error position:</ins>
+************
+
+### Задание 6
+
+```sql
+SELECT
+	CONCAT(UPPER( LEFT (c.email,1)), LOWER( SUBSTR(c.email , 2, (INSTR(c.email, '@')-2)))) 'left',
+	CONCAT( UPPER( SUBSTR(c.email , INSTR(c.email, '@')+1, 1)),
+	LOWER( RIGHT (c.email ,
+	CHAR_LENGTH(c.email)-INSTR(c.email, '@')-1))) 'r'
+	FROM
+	sakila.customer c ;
+```
+
+![customer4](img/customer4.png)	
+	
+	
