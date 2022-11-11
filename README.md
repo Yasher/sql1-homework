@@ -134,9 +134,13 @@ FROM
 
 ************
 <ins>
-POSITION ('@' IN c.email)
-не работает
-SQL Error [1064] [42000]: You have an error in your SQL syntax; check the manual that corresponds to your MySQL server version for the right syntax to use near 'c.email) FROM sakila.customer c' at line 1
+POSITION ('@' IN c.email)<br>
+<br>
+не работает<br>
+<br>
+SQL Error [1064] [42000]: You have an error in your SQL syntax; check the manual that corresponds to your<br> 
+MySQL server version for the right syntax to use near 'c.email) FROM sakila.customer c' at line 1<br>
+<br>
  
 Error position:</ins>
 ************
