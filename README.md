@@ -58,11 +58,13 @@ BETWEEN '2005-06-15 00:00:00' AND '2005-06-18 23:59:59'
 
 ![Payments](img/payments.png)
 
+
+************
 <span style="color:blue">
 SELECT CAST ( p.payment_date  AS DATE ) ddd FROM sakila.payment p; <br> 
 SQL Error [1584] [42000]: Incorrect parameters in the call to stored function `CAST` <br> 
 CAST Не работает Почему?</span>
-
+************
 
 ---
 
