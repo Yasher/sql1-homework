@@ -46,7 +46,7 @@ WHERE
 	AND INSTR(district, ' ') = 0;
 ```
 
-`![Районы](img/district.png)`
+![Районы](img/district.png)
 
 
 ---
